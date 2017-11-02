@@ -1,26 +1,46 @@
 import React from 'react';
-import { func } from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Gifs.css';
 
 class Gifs extends React.Component {
-  static propTypes = {
-    fetch: func.isRequired,
-  };
-  handleOnChange = evt => {
-    const formData = new FormData();
-    formData.append('gifInput', evt.target.files[0]);
-    this.props.fetch('/test', {
-      method: 'POST',
-      body: formData,
-    });
-  };
-
   render() {
     return (
       <div className={s.root}>
         <div className={s.container} />
-        <input type="file" accept="image/gif" onChange={this.handleOnChange} />
+        <form id="postGif" encType="multipart/form-data" method="post">
+          <div className={s.div}>
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="How to"
+              required
+            />
+          </div>
+          <div className={s.div}>
+            <label htmlFor="gif">Your Gif</label>
+            <input
+              type="file"
+              id="gifFile"
+              name="gifFile"
+              accept="image/gif"
+              required
+            />
+          </div>
+          <div className={s.div}>
+            <label htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              form="postGif"
+              placeholder="How to"
+            />
+          </div>
+          <div>
+            <button>Submit</button>
+          </div>
+        </form>
       </div>
     );
   }

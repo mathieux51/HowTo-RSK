@@ -1,12 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -28,7 +19,7 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
-import models from './data/models';
+import models, { Gif } from './data/models';
 import schema from './data/schema';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
@@ -120,17 +111,22 @@ app.use(
 // -----------------------------------------------------------------------------
 // TODO add constraint on the gif size https://github.com/mscdex/busboy#busboy-methods
 const storage = multer.diskStorage({
-  destination: 'public/uploads/',
+  destination: 'public/gifs/',
   filename(req, file, cb) {
-    const fileId = v4();
-    const fileName = `${fileId}.${mime.getExtension(file.mimetype)}`;
+    const fileName = `${v4()}.${mime.getExtension(file.mimetype)}`;
     cb(null, fileName);
   },
 });
 const upload = multer({ storage });
-app.post('/test', upload.single('gifInput'), (req, res) => {
-  console.warn(req.body); // form fields
-  console.warn(req.file); // form files
+app.post('/gifs', upload.single('gifFile'), async (req, res) => {
+  if (req.file) {
+    await Gif.create({
+      id: req.file.filename.split('.')[0],
+      title: req.body.title,
+      description: req.body.description || '',
+      location: `gifs/${req.file.filename}`,
+    });
+  }
   res.status(204).end();
 });
 
@@ -241,6 +237,10 @@ app.use((err, req, res, next) => {
 // Launch the server
 // -----------------------------------------------------------------------------
 const promise = models.sync().catch(err => console.error(err.stack));
+
+//
+// 🚫🌭 Not Hot Module Replacement
+// -----------------------------------------------------------------------------
 if (!module.hot) {
   promise.then(() => {
     app.listen(config.port, () => {
@@ -250,7 +250,7 @@ if (!module.hot) {
 }
 
 //
-// Hot Module Replacement
+// 🌶 Hot Module Replacement
 // -----------------------------------------------------------------------------
 if (module.hot) {
   app.hot = module.hot;

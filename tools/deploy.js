@@ -1,12 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import path from 'path';
 import fetch from 'node-fetch';
 import { spawn } from './lib/cp';
@@ -16,9 +7,9 @@ import run from './run';
 // GitHub Pages
 const remote = {
   name: 'github',
-  url: 'https://github.com/<user>/<repo>.git',
+  url: 'https://github.com/mathieux51/HowTo-RSK.git',
   branch: 'gh-pages',
-  website: 'https://<user>.github.io/<repo>/',
+  website: 'https://mathieux51.github.io/HowTo-RSK/',
   static: true,
 };
 

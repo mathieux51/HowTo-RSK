@@ -11,7 +11,8 @@
   max-width: var(--max-content-width);
 }
 
-/*.form {*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-/*}*/
+.div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}

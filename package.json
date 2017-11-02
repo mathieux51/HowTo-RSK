@@ -6,12 +6,7 @@
     "node": ">=6.5",
     "npm": ">=3.10"
   },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie < 9"
-  ],
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "bluebird": "^3.5.0",
@@ -23,6 +18,7 @@
     "express-graphql": "^0.6.6",
     "express-jwt": "^5.3.0",
     "graphql": "^0.10.3",
+    "graphql-sequelize": "^5.5.0",
     "history": "^4.6.3",
     "isomorphic-style-loader": "^4.0.0",
     "jsonwebtoken": "^7.4.1",
@@ -84,6 +80,7 @@
     "file-loader": "^0.11.2",
     "front-matter": "^2.1.2",
     "glob": "^7.1.2",
+    "graphql-relay": "^0.5.3",
     "husky": "^0.14.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
@@ -148,9 +145,7 @@
     "retainLines": true,
     "env": {
       "test": {
-        "plugins": [
-          "rewire"
-        ]
+        "plugins": ["rewire"]
       }
     },
     "ignore": [
@@ -162,18 +157,9 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,graphql}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{css,less,scss,sss}": [
-      "stylelint --fix",
-      "git add"
-    ]
+    "*.{js,jsx}": ["eslint --fix", "git add"],
+    "*.{json,graphql}": ["prettier --write", "git add"],
+    "*.{css,less,scss,sss}": ["stylelint --fix", "git add"]
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -195,6 +181,6 @@
     "deploy": "babel-node tools/run deploy",
     "render": "babel-node tools/run render",
     "serve": "babel-node tools/run runServer",
-    "start": "babel-node $NODE_DEBUG_OPTION tools/run start"
+    "start": "babel-node tools/run start"
   }
 }
