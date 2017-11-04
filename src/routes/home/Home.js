@@ -18,7 +18,7 @@ class Home extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>Random selection</h1>
+          <h1>Random Selection</h1>
           <div className={s.main}>
             {this.props.gifs.map(gif => (
               <Link className={s.link} to={`gif/${gif.id}`} key={gif.id}>
