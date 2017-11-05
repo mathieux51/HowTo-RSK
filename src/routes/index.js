@@ -1,10 +1,9 @@
 /* eslint-disable global-require */
 
-// The top-level (parent) route
 const routes = {
   path: '/',
 
-  // Keep in mind, routes are evaluated in order
+  // Routes are evaluated in order
   children: [
     {
       path: '/',
@@ -35,11 +34,15 @@ const routes = {
       load: () => import(/* webpackChunkName: 'admin' */ './admin'),
     },
     {
-      path: '/gifs',
-      load: () => import(/* webpackChunkName: 'gifs' */ './gifs'),
+      path: '/add',
+      load: () => import(/* webpackChunkName: 'add' */ './add'),
+    },
+    {
+      path: '/gif/:id',
+      load: () => import(/* webpackChunkName: 'gif' */ './gif'),
     },
 
-    // Wildcard routes, e.g. { path: '*', ... } (must go last)
+    // Wildcard routes must go last
     {
       path: '*',
       load: () => import(/* webpackChunkName: 'not-found' */ './not-found'),
@@ -51,7 +54,8 @@ const routes = {
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - www.reactstarterkit.com`;
+    route.title = `${route.title ||
+      'Untitled Page'} - https://apphowto.herokuapp.com/`;
     route.description = route.description || '';
 
     return route;

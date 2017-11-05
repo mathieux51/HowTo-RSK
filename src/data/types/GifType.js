@@ -7,7 +7,7 @@ import {
 
 const GifType = new ObjectType({
   name: 'Gif',
-  description: '🌶',
+  description: 'GifType description',
   fields: {
     id: { type: new NonNull(ID) },
     title: { type: StringType },

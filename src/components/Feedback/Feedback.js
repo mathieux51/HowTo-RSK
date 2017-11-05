@@ -9,14 +9,14 @@ class Feedback extends React.Component {
         <div className={s.container}>
           <a
             className={s.link}
-            href="https://gitter.im/kriasoft/react-starter-kit"
+            href="https://join.slack.com/t/howtoworkspace/shared_invite/enQtMjY4MDgxODk5ODE1LTI5OGVkNzcxYjlmZjg2YTA3MzIxOTBhNTg3MzA3NjkxODFkOWFhZDg1ZTE0OGYyMWE2NDRiOWVlMTYwNjlkMDE"
           >
             Ask a question
           </a>
           <span className={s.spacer}>|</span>
           <a
             className={s.link}
-            href="https://github.com/kriasoft/react-starter-kit/issues/new"
+            href="https://github.com/mathieux51/HowTo-RSK/issues/new"
           >
             Report an issue
           </a>

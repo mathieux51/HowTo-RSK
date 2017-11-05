@@ -18,6 +18,10 @@ const Gif = Model.define('Gif', {
   location: {
     type: DataType.STRING(50),
   },
+
+  createdBy: {
+    type: DataType.STRING(50),
+  },
 });
 
 export default Gif;

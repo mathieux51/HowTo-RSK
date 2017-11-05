@@ -1,5 +1,5 @@
 import React from 'react';
-import Gifs from './Gifs';
+import Add from './Add';
 import Layout from '../../components/Layout';
 
 async function action(props) {
@@ -12,11 +12,11 @@ async function action(props) {
   // const { data } = await resp.json();
   // if (!data || !data.news) throw new Error('Failed to load the news feed.');
   return {
-    chunks: ['gifs'],
-    title: 'Gifs',
+    chunks: ['add'],
+    title: 'Add',
     component: (
       <Layout>
-        <Gifs {...props} />
+        <Add {...props} />
       </Layout>
     ),
   };

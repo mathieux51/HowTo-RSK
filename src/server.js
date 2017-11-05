@@ -9,9 +9,7 @@ import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
-import multer from 'multer';
-import { v4 } from 'uuid';
-import mime from 'mime';
+import { AddController, upload } from 'controllers/AddController';
 import App from './components/App';
 import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
@@ -19,7 +17,7 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import passport from './passport';
 import router from './router';
-import models, { Gif } from './data/models';
+import models from './data/models';
 import schema from './data/schema';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
@@ -109,26 +107,7 @@ app.use(
 //
 // Gifs Upload
 // -----------------------------------------------------------------------------
-// TODO add constraint on the gif size https://github.com/mscdex/busboy#busboy-methods
-const storage = multer.diskStorage({
-  destination: 'public/gifs/',
-  filename(req, file, cb) {
-    const fileName = `${v4()}.${mime.getExtension(file.mimetype)}`;
-    cb(null, fileName);
-  },
-});
-const upload = multer({ storage });
-app.post('/gifs', upload.single('gifFile'), async (req, res) => {
-  if (req.file) {
-    await Gif.create({
-      id: req.file.filename.split('.')[0],
-      title: req.body.title,
-      description: req.body.description || '',
-      location: `gifs/${req.file.filename}`,
-    });
-  }
-  res.status(204).end();
-});
+app.post('/add', upload.single('gifFile'), AddController);
 
 //
 // Register server-side rendering middleware
