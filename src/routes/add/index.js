@@ -3,14 +3,11 @@ import Add from './Add';
 import Layout from '../../components/Layout';
 
 async function action(props) {
-  // async function action({ fetch }) {
-  // const resp = await fetch('/graphql', {
-  //   body: JSON.stringify({
-  //     query: '{news{title,link,content}}',
-  //   }),
-  // });
-  // const { data } = await resp.json();
-  // if (!data || !data.news) throw new Error('Failed to load the news feed.');
+  // Have to be logged in to add a gif
+  // https://github.com/kriasoft/react-starter-kit/issues/870#issuecomment-263114064
+  if (!props.store.getState().userProfile.displayName) {
+    return { redirect: '/login' };
+  }
   return {
     chunks: ['add'],
     title: 'Add',

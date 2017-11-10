@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
 export const upload = multer({ storage });
 
-export async function AddController(req, res) {
+export async function addController(req, res) {
   let id;
   if (req.file.size) {
     id = req.file.filename.split('.')[0];

@@ -32,7 +32,7 @@ passport.use(
       /* eslint-disable no-underscore-dangle */
       const loginName = 'facebook';
       const claimType = 'urn:facebook:access_token';
-      const fooBar = async () => {
+      const main = async () => {
         if (req.user) {
           const userLogin = await UserLogin.findOne({
             attributes: ['name', 'key'],
@@ -52,7 +52,9 @@ passport.use(
                 profile: {
                   displayName: profile.displayName,
                   gender: profile._json.gender,
-                  picture: `https://graph.facebook.com/${profile.id}/picture?type=large`,
+                  picture: `https://graph.facebook.com/${
+                    profile.id
+                  }/picture?type=large`,
                 },
               },
               {
@@ -102,7 +104,9 @@ passport.use(
                   profile: {
                     displayName: profile.displayName,
                     gender: profile._json.gender,
-                    picture: `https://graph.facebook.com/${profile.id}/picture?type=large`,
+                    picture: `https://graph.facebook.com/${
+                      profile.id
+                    }/picture?type=large`,
                   },
                 },
                 {
@@ -122,7 +126,7 @@ passport.use(
         }
       };
 
-      fooBar().catch(done);
+      main().catch(done);
     },
   ),
 );

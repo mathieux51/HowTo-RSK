@@ -1,4 +1,6 @@
 import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
@@ -13,7 +15,6 @@ class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
   };
-
   render() {
     return (
       <div>
@@ -26,4 +27,10 @@ class Layout extends React.Component {
   }
 }
 
-export default withStyles(normalizeCss, s)(Layout);
+const mapStateToProps = state => ({
+  userProfile: state.userProfile,
+});
+
+export default compose(withStyles(normalizeCss, s), connect(mapStateToProps))(
+  Layout,
+);

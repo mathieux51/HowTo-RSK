@@ -1,4 +1,4 @@
-export default function user(state = {}, action) {
+export default function userJwt(state = {}, action) {
   switch (action.type) {
     default:
       return state;

@@ -31,7 +31,7 @@ class Login extends React.Component {
             </a>
           </div>
           <div className={s.formGroup}>
-            <a className={s.google} href="/login/google">
+            <a className={s.google} href="/login/google" disabled>
               <svg
                 className={s.icon}
                 width="30"
@@ -56,7 +56,7 @@ class Login extends React.Component {
             </a>
           </div>
           <div className={s.formGroup}>
-            <a className={s.twitter} href="/login/twitter">
+            <a className={s.twitter} href="/login/twitter" disabled>
               <svg
                 className={s.icon}
                 width="30"
@@ -80,7 +80,7 @@ class Login extends React.Component {
             </a>
           </div>
           <strong className={s.lineThrough}>OR</strong>
-          <form method="post">
+          <form id="usernameOrEmail" method="post">
             <div className={s.formGroup}>
               <label className={s.label} htmlFor="usernameOrEmail">
                 Username or email address:

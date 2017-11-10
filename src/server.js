@@ -9,7 +9,7 @@ import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
-import { AddController, upload } from 'controllers/AddController';
+import { addController, upload } from 'controllers/addController';
 import App from './components/App';
 import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
@@ -21,7 +21,7 @@ import models from './data/models';
 import schema from './data/schema';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
-import { setRuntimeVariable } from './actions/runtime';
+// import { setRuntimeVariable } from './actions/runtime';
 import config from './config';
 
 const app = express();
@@ -81,6 +81,8 @@ app.get(
   '/login/facebook/return',
   passport.authenticate('facebook', {
     failureRedirect: '/login',
+    // failureFlash: 'Facebook authentification failed',
+    // successFlash: 'Successfully logged in with Facebook',
     session: false,
   }),
   (req, res) => {
@@ -90,6 +92,11 @@ app.get(
     res.redirect('/');
   },
 );
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
 
 //
 // Register API middleware
@@ -107,7 +114,12 @@ app.use(
 //
 // Gifs Upload
 // -----------------------------------------------------------------------------
-app.post('/add', upload.single('gifFile'), AddController);
+app.post('/add', upload.single('gifFile'), addController);
+
+//
+// Login
+// -----------------------------------------------------------------------------
+// app.post('/login', async (req, res) => {});
 
 //
 // Register server-side rendering middleware
@@ -116,14 +128,23 @@ app.get('*', async (req, res, next) => {
   try {
     const css = new Set();
 
-    // Universal HTTP client
+    // Universal HTTP clientw
     const fetch = createFetch(nodeFetch, {
       baseUrl: config.api.serverUrl,
       cookie: req.headers.cookie,
     });
 
+    // // get userProfile
+    // const resp = await fetch('/graphql', {
+    //   body: JSON.stringify({
+    //     query: '{userProfile{displayName,picture,gender,location,website}}',
+    //   }),
+    // });
+    // const { data: userProfile } = await resp.json();
+
     const initialState = {
-      user: req.user || null,
+      userJwt: req.user || null,
+      userProfile: {},
     };
 
     const store = configureStore(initialState, {
@@ -131,12 +152,12 @@ app.get('*', async (req, res, next) => {
       // I should not use `history` on server.. but how I do redirection? follow universal-router
     });
 
-    store.dispatch(
-      setRuntimeVariable({
-        name: 'initialNow',
-        value: Date.now(),
-      }),
-    );
+    // store.dispatch(
+    //   setRuntimeVariable({
+    //     name: 'initialNow',
+    //     value: Date.now(),
+    //   }),
+    // );
 
     // Global (context) variables that can be easily accessed from any React component
     // https://facebook.github.io/react/docs/context.html
@@ -218,7 +239,7 @@ app.use((err, req, res, next) => {
 const promise = models.sync().catch(err => console.error(err.stack));
 
 //
-// 🚫🌭 Not Hot Module Replacement
+// 🎬 "3.2.1 ACTION"
 // -----------------------------------------------------------------------------
 if (!module.hot) {
   promise.then(() => {

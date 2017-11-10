@@ -1,19 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { string, arrayOf, shape } from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Link from 'components/Link';
 import s from './Home.css';
 
 class Home extends React.Component {
   static propTypes = {
-    gifs: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        location: PropTypes.string.isRequired,
+    gifs: arrayOf(
+      shape({
+        id: string.isRequired,
+        title: string.isRequired,
+        location: string.isRequired,
+        description: string,
+        createdBy: string,
       }),
     ).isRequired,
   };
-
   render() {
     return (
       <div className={s.root}>
@@ -37,4 +41,8 @@ class Home extends React.Component {
   }
 }
 
-export default withStyles(s)(Home);
+const mapStateToProps = state => ({
+  userProfile: state.userProfile,
+});
+
+export default compose(withStyles(s), connect(mapStateToProps))(Home);

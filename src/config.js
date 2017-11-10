@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 /* eslint-disable max-len */
 
 if (process.env.BROWSER) {

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import user from './user';
+import userJwt from './userJwt';
+import userProfile from './userProfile';
 import runtime from './runtime';
 
 export default combineReducers({
-  user,
+  userJwt,
+  userProfile,
   runtime,
 });
