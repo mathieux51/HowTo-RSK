@@ -26,6 +26,7 @@ class Home extends React.Component {
           <Link className={''} to="/add">
             <p>Add a new gif</p>
           </Link>
+          <h1>Search a gif</h1>
           <h1>Random Selection</h1>
           <div className={s.main}>
             {this.props.gifs.map(gif => (

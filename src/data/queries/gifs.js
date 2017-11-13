@@ -1,13 +1,30 @@
-import { GraphQLList as List } from 'graphql';
+import { GraphQLList as List, GraphQLString as StringType } from 'graphql';
 import { resolver } from 'graphql-sequelize';
 import GifType from '../types/GifType';
 import { Gif } from '../models';
 
 const gifs = {
   type: new List(GifType),
-  resolve: resolver(Gif),
+  args: {
+    filter: { type: StringType, description: 'Search' },
+  },
+  resolve: resolver(Gif, {
+    after: (result, args) => {
+      if (args.filter) {
+        return result.reduce((acc, cur) => {
+          if (
+            cur.dataValues.title.match(new RegExp(args.filter, 'i')) ||
+            cur.dataValues.description.match(new RegExp(args.filter, 'i'))
+          ) {
+            acc.push(cur);
+          }
+          return acc;
+        }, []);
+      }
+      return result;
+    },
+  }),
 };
-
 export default gifs;
 
 // GraphQLInt as Int,

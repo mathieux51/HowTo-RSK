@@ -38,9 +38,9 @@ function createCompilationPromise(name, compiler, config) {
         reject(new Error('Compilation failed!'));
       } else {
         console.info(
-          `[${format(
-            timeEnd,
-          )}] Finished '${name}' compilation after ${time} ms`,
+          `[${format(timeEnd)}] Finished '${name}' compilation after ${
+            time
+          } ms`,
         );
         resolve(stats);
       }
@@ -222,6 +222,7 @@ async function start() {
     browserSync.create().init(
       {
         // https://www.browsersync.io/docs/options
+        port: process.env.PORT || 3004,
         server: 'src/server.js',
         middleware: [server],
         open: !process.argv.includes('--silent'),
