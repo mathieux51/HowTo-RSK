@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, Image } from 'semantic-ui-react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Gif.css';
 
@@ -15,19 +16,11 @@ class Gif extends React.Component {
 
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <div>
-            <h1>{this.props.gif.title}</h1>
-            <img
-              className={s.img}
-              src={`/${this.props.gif.location}`}
-              alt="gif"
-            />
-            <p>{this.props.gif.description}</p>
-          </div>
-        </div>
-      </div>
+      <Container>
+        <h1>{this.props.gif.title}</h1>
+        <Image src={`/${this.props.gif.location}`} fluid />
+        <p>{this.props.gif.description}</p>
+      </Container>
     );
   }
 }

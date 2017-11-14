@@ -1,5 +1,6 @@
 import { GraphQLList as List, GraphQLString as StringType } from 'graphql';
 import { resolver } from 'graphql-sequelize';
+import escapeRegExp from 'lodash/escapeRegExp';
 import GifType from '../types/GifType';
 import { Gif } from '../models';
 
@@ -13,8 +14,12 @@ const gifs = {
       if (args.filter) {
         return result.reduce((acc, cur) => {
           if (
-            cur.dataValues.title.match(new RegExp(args.filter, 'i')) ||
-            cur.dataValues.description.match(new RegExp(args.filter, 'i'))
+            cur.dataValues.title.match(
+              new RegExp(escapeRegExp(args.filter), 'i'),
+            ) ||
+            cur.dataValues.description.match(
+              new RegExp(escapeRegExp(args.filter), 'i'),
+            )
           ) {
             acc.push(cur);
           }

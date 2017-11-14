@@ -101,6 +101,7 @@ app.get('/logout', (req, res) => {
 //
 // Register API middleware
 // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 app.use(
   '/graphql',
   expressGraphQL(req => ({
@@ -145,6 +146,7 @@ app.get('*', async (req, res, next) => {
     const initialState = {
       userJwt: req.user || null,
       userProfile: {},
+      history: {},
     };
 
     const store = configureStore(initialState, {

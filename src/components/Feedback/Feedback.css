@@ -1,6 +1,7 @@
 @import '../variables.css';
 
 .root {
+  margin-top: 1rem;
   background: #f5f5f5;
   color: #333;
 }

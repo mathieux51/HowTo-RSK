@@ -1,27 +1,6 @@
 @import '../../components/variables.css';
 
-.root {
-  padding-left: 20px;
-  padding-right: 20px;
+.margin {
+  margin: 3em auto;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: var(--max-content-width);
-}
-
-.main {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.link {
-  flex: 0 300px;
-  margin: 1rem;
-}
-
-.img {
-  max-width: 100%;
-}

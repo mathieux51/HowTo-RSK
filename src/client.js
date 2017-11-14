@@ -26,7 +26,7 @@ const context = {
     };
   },
   // Universal HTTP client
-  fetch: createFetch(self.fetch, {
+  fetch: createFetch(window.self.fetch, {
     baseUrl: window.App.apiUrl,
   }),
   // Initialize a new Redux store
@@ -60,6 +60,7 @@ let onRenderComplete = function initialRenderComplete() {
     let scrollY = 0;
     const pos = scrollPositionsHistory[location.key];
     if (pos) {
+      /* eslint-disable prefer-destructuring */
       scrollX = pos.scrollX;
       scrollY = pos.scrollY;
     } else {
@@ -122,7 +123,7 @@ async function onLocationChange(location, action) {
       return;
     }
 
-    appInstance = ReactDOM.render(
+    appInstance = ReactDOM.hydrate(
       <App context={context}>{route.component}</App>,
       container,
       () => onRenderComplete(route, location),

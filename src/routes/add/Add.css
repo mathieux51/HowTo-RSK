@@ -1,18 +1,29 @@
 @import '../../components/variables.css';
 
-.root {
-  padding-left: 20px;
-  padding-right: 20px;
+.label {
+  cursor: pointer;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: var(--max-content-width);
+.input {
+  display: none;
 }
 
-.div {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
+.margin {
+  margin: 3em auto;
+}
+
+.space {
+  position: relative;
+  animation-name: move;
+  animation-duration: 2s;
+}
+
+@keyframes move {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0;
+  }
 }
