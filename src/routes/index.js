@@ -54,8 +54,7 @@ const routes = {
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title ||
-      'Untitled Page'} - https://apphowto.herokuapp.com/`;
+    route.title = `${route.title || 'Untitled Page'} - apphowto.herokuapp.com/`;
     route.description = route.description || '';
 
     return route;

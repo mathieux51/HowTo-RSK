@@ -6,7 +6,7 @@ import { historyPush } from '../../actions/history';
 async function action(props) {
   // Have to be logged in to add a gif
   // https://github.com/kriasoft/react-starter-kit/issues/870#issuecomment-263114064
-  if (!props.store.getState().userProfile.displayName) {
+  if (!props.store.getState().userJwt) {
     props.store.dispatch(
       historyPush({
         pathname: '/login',

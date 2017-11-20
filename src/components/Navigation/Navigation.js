@@ -11,9 +11,9 @@ import s from './Navigation.css';
 
 class Navigation extends React.Component {
   static propTypes = {
-    userProfile: shape({
-      displayName: string,
-      picture: string,
+    userJwt: shape({
+      email: string,
+      id: string,
     }),
     historyPush: func.isRequired,
     history: shape({
@@ -22,7 +22,7 @@ class Navigation extends React.Component {
     }).isRequired,
   };
   static defaultProps = {
-    userProfile: {},
+    userJwt: {},
   };
 
   componentDidMount = () => {
@@ -41,9 +41,9 @@ class Navigation extends React.Component {
   handleClick = (evt, { name }) => {
     evt.stopPropagation();
     evt.preventDefault();
-    // console.warn('name', name)
     const isHome = name === '/home';
     const pathname = isHome ? '' : name;
+    if (pathname === this.props.history.pathname) return; // Prevent action dispatch if already on the right route
     this.props.historyPush({
       pathname,
       name: isHome ? 'Home' : this.getPathName(pathname),
@@ -52,8 +52,6 @@ class Navigation extends React.Component {
 
   render() {
     const { name } = this.props.history;
-    const { displayName } = this.props.userProfile;
-    // const { displayName, picture } = this.props.userProfile;
     return (
       <div>
         <Menu tabular>
@@ -67,12 +65,7 @@ class Navigation extends React.Component {
             active={name === 'Add'}
             onClick={this.handleClick}
           />
-          <Menu.Item
-            name="/about"
-            active={name === 'About'}
-            onClick={this.handleClick}
-          />
-          {displayName ? (
+          {this.props.userJwt ? (
             <Menu.Item position="right">
               <a href="/logout">Logout</a>
             </Menu.Item>
@@ -91,7 +84,7 @@ class Navigation extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userProfile: state.userProfile,
+  userJwt: state.userJwt,
   history: state.history,
 });
 

@@ -30,6 +30,7 @@ class Home extends React.Component {
     fetch: func.isRequired,
   };
   render() {
+    const { gifs } = this.props;
     return (
       <Container>
         <div className={s.margin}>
@@ -65,14 +66,15 @@ class Home extends React.Component {
         </div>
         <div className={s.margin}>
           <Grid container columns={3} doubling stackable centered>
-            {this.props.gifs.map(gif => (
-              <Grid.Column key={gif.id}>
-                <Card onClick={() => history.push(`gif/${gif.id}`)}>
-                  <Image size="medium" src={gif.location} />
-                  <Card.Content>{gif.title}</Card.Content>
-                </Card>
-              </Grid.Column>
-            ))}
+            {gifs &&
+              gifs.map(gif => (
+                <Grid.Column key={gif.id}>
+                  <Card onClick={() => history.push(`gif/${gif.id}`)}>
+                    <Image size="medium" src={gif.location} />
+                    <Card.Content>{gif.title}</Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))}
           </Grid>
         </div>
       </Container>

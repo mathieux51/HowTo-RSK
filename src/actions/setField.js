@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import { SET_FIELD } from '../constants/index';
+import { SET_FIELD } from '../constants';
 
 export const setField = (field, fielName) => dispatch => {
   dispatch({

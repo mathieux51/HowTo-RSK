@@ -14,15 +14,15 @@ const storage = multer.diskStorage({
 export const upload = multer({ storage });
 
 export async function addController(req, res) {
-  let id;
+  let id = null;
   if (req.file.size) {
-    id = req.file.filename.split('.')[0];
+    [id] = req.file.filename.split('.');
     await Gif.create({
       id,
       title: req.body.title,
       description: req.body.description || '',
       location: `gifs/${req.file.filename}`,
-      createdBy: '',
+      createdBy: req.user.email,
     });
   }
   res.json({ id });

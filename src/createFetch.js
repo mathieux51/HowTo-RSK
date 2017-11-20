@@ -25,7 +25,6 @@ function createFetch(fetch: Fetch, { baseUrl, cookie }: Options) {
       ...(cookie ? { Cookie: cookie } : null),
     },
   };
-
   return (url: string, options: any) =>
     url.startsWith('/graphql') || url.startsWith('/api')
       ? fetch(`${baseUrl}${url}`, {

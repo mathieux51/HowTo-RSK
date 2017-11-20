@@ -2,15 +2,12 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Register from './Register';
 
-const title = 'New User Registration';
-
-function action() {
+function action(props) {
   return {
     chunks: ['register'],
-    title,
     component: (
       <Layout>
-        <Register title={title} />
+        <Register fetch={props.fetch} />
       </Layout>
     ),
   };

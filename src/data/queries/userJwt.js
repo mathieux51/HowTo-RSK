@@ -1,6 +1,6 @@
 import UserJwtType from '../types/UserJwtType';
 
-const userJWT = {
+const userJwt = {
   type: UserJwtType,
   resolve({ req }) {
     return (
@@ -12,4 +12,4 @@ const userJWT = {
   },
 };
 
-export default userJWT;
+export default userJwt;

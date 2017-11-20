@@ -2,12 +2,13 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Login from './Login';
 
-function action() {
+function action(props) {
   return {
     chunks: ['login'],
+    title: 'Add',
     component: (
       <Layout>
-        <Login />
+        <Login fetch={props.fetch} />
       </Layout>
     ),
   };

@@ -21,7 +21,6 @@ import models from './data/models';
 import schema from './data/schema';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
-// import { setRuntimeVariable } from './actions/runtime';
 import config from './config';
 
 const app = express();
@@ -69,38 +68,109 @@ if (__DEV__) {
   app.enable('trust proxy');
 }
 
-app.get(
-  '/login/facebook',
-  passport.authenticate('facebook', {
-    scope: ['email', 'user_location'],
-    session: false,
-  }),
-);
+//
+// Facebook login
+// -----------------------------------------------------------------------------
+// app.get(
+//   '/login/facebook',
+//   passport.authenticate('facebook', {
+//     scope: ['email', 'user_location'],
+//     session: false,
+//   }),
+// );
+//
+// app.get(
+//   '/login/facebook/return',
+//   passport.authenticate('facebook', {
+//     failureRedirect: '/login',
+//     // failureFlash: 'Facebook authentification failed',
+//     // successFlash: 'Successfully logged in with Facebook',
+//     session: false,
+//   }),
+//   (req, res) => {
+//     const expiresIn = 60 * 60 * 24 * 180; // 180 days
+//     const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
+//     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
+//     res.redirect('/');
+//   },
+// );
 
-app.get(
-  '/login/facebook/return',
-  passport.authenticate('facebook', {
-    failureRedirect: '/login',
-    // failureFlash: 'Facebook authentification failed',
-    // successFlash: 'Successfully logged in with Facebook',
-    session: false,
-  }),
-  (req, res) => {
-    const expiresIn = 60 * 60 * 24 * 180; // 180 days
-    const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
-    res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
-    res.redirect('/');
-  },
-);
+app.post('/signup/local', upload.fields([]), (req, res, next) => {
+  passport.authenticate('local-signup', (err, user, msg) => {
+    if (err) {
+      return next(err);
+    }
+    if (msg) {
+      return res.json({ ...msg });
+    }
+    if (!user) {
+      return res.json({ msg: 'User creation failed.' });
+    }
+    req.logIn(user, _err => {
+      if (_err) {
+        return next(_err);
+      }
+      const expiresIn = 60 * 10; // 10min
+      const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
+      res.cookie('id_token', token, {
+        maxAge: 1000 * expiresIn,
+        httpOnly: true, // Protect cookie on the client side
+      });
+      return res.json({ user: req.user });
+    });
+    return res.status(200).json({ status: 'ok' });
+  })(req, res, next);
+});
+
+app.post('/login/local', upload.fields([]), (req, res, next) => {
+  passport.authenticate('local-login', (err, user, msg) => {
+    if (err) {
+      return next(err);
+    }
+    if (msg) {
+      return res.json({ ...msg });
+    }
+    if (!user) {
+      return res.json({ msg: 'No user was found.' });
+    }
+    req.logIn(user, _err => {
+      if (_err) {
+        return next(_err);
+      }
+      const expiresIn = 60 * 10; // 10min
+      const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
+      res.cookie('id_token', token, {
+        maxAge: 1000 * expiresIn,
+        httpOnly: true, // Protect cookie on the client side
+      });
+      return res.json({ user: req.user });
+    });
+    return res.status(200).json({ status: 'ok' });
+  })(req, res, next);
+});
+
+// app.post(
+//   '/login/local',
+//   // https://github.com/expressjs/body-parser/issues/88
+//   upload.fields([]),
+//   passport.authenticate('local-login'),
+//   (req, res) => {
+//     res.status(200).json({ status: 'ok' });
+//   },
+// );
 
 app.get('/logout', (req, res) => {
   req.logout();
+  res.clearCookie('id_token');
   res.redirect('/');
+});
+
+app.get('/getToken', (req, res) => {
+  res.status(200).json({ status: 'ok' });
 });
 
 //
 // Register API middleware
-// -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 app.use(
   '/graphql',
@@ -116,11 +186,6 @@ app.use(
 // Gifs Upload
 // -----------------------------------------------------------------------------
 app.post('/add', upload.single('gifFile'), addController);
-
-//
-// Login
-// -----------------------------------------------------------------------------
-// app.post('/login', async (req, res) => {});
 
 //
 // Register server-side rendering middleware
@@ -145,7 +210,7 @@ app.get('*', async (req, res, next) => {
 
     const initialState = {
       userJwt: req.user || null,
-      userProfile: {},
+      userProfile: null,
       history: {},
     };
 
