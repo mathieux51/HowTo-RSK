@@ -10,6 +10,8 @@ import {
   Header,
   Grid,
   Segment,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { historyPush } from 'actions/history';
@@ -28,6 +30,7 @@ class Add extends React.Component {
     this.state = {
       hasFile: false,
       hasTitle: false,
+      isFetching: false,
     };
   }
 
@@ -42,19 +45,25 @@ class Add extends React.Component {
   };
 
   async handleSubmit(evt) {
-    evt.preventDefault();
-    const form = document.querySelector('#postGif');
-    const formData = new FormData(form);
-    const res = await this.props.fetch('/add', {
-      method: 'POST',
-      credentials: 'same-origin', // https://stackoverflow.com/questions/34734208/cookies-not-being-stored-with-fetch,
-      body: formData,
-    });
-    const { id } = await res.json();
-    this.props.historyPush({
-      name: 'Gif',
-      pathname: `/gif/${id}`,
-    });
+    try {
+      evt.preventDefault();
+      const form = document.querySelector('#postGif');
+      const formData = new FormData(form);
+      this.setState({ isFetching: true });
+      const res = await this.props.fetch('/add', {
+        method: 'POST',
+        credentials: 'same-origin', // https://stackoverflow.com/questions/34734208/cookies-not-being-stored-with-fetch,
+        body: formData,
+      });
+      const { id } = await res.json();
+      this.setState({ isFetching: false });
+      this.props.historyPush({
+        name: 'Gif',
+        pathname: `/gif/${id}`,
+      });
+    } catch (err) {
+      this.setState({ isFetching: false });
+    }
   }
   render() {
     const isValid = this.state.hasTitle && this.state.hasFile;
@@ -76,28 +85,34 @@ class Add extends React.Component {
                   inverted
                   color={this.state.hasFile ? 'green' : undefined}
                 >
-                  <Form.Field required>
-                    <label htmlFor="gifFile" className={s.label}>
-                      {this.state.hasFile ? (
-                        <Icon
-                          name="space shuttle"
-                          size="huge"
-                          className={s.space}
+                  {this.state.isFetching ? (
+                    <Dimmer active>
+                      <Loader>Loading</Loader>
+                    </Dimmer>
+                  ) : (
+                    <Form.Field required>
+                      <label htmlFor="gifFile" className={s.label}>
+                        {this.state.hasFile ? (
+                          <Icon
+                            name="space shuttle"
+                            size="huge"
+                            className={s.space}
+                          />
+                        ) : (
+                          <Icon name="upload" size="huge" />
+                        )}
+                        <input
+                          onChange={this.handleStyle}
+                          className={s.input}
+                          type="file"
+                          id="gifFile"
+                          name="gifFile"
+                          accept="image/gif"
+                          tabIndex={0}
                         />
-                      ) : (
-                        <Icon name="upload" size="huge" />
-                      )}
-                      <input
-                        onChange={this.handleStyle}
-                        className={s.input}
-                        type="file"
-                        id="gifFile"
-                        name="gifFile"
-                        accept="image/gif"
-                        tabIndex={0}
-                      />
-                    </label>
-                  </Form.Field>
+                      </label>
+                    </Form.Field>
+                  )}
                 </Segment>
               </Grid.Column>
             </Grid>
