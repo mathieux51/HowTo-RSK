@@ -25,24 +25,18 @@ import config from './config';
 
 const app = express();
 
-//
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
 // user agent is not known.
-// -----------------------------------------------------------------------------
 global.navigator = global.navigator || {};
 global.navigator.userAgent = global.navigator.userAgent || 'all';
 
-//
 // Register Node.js middleware
-// -----------------------------------------------------------------------------
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//
 // Authentication
-// -----------------------------------------------------------------------------
 app.use(
   expressJwt({
     secret: config.auth.jwt.secret,
@@ -68,9 +62,7 @@ if (__DEV__) {
   app.enable('trust proxy');
 }
 
-//
 // Facebook login
-// -----------------------------------------------------------------------------
 // app.get(
 //   '/login/facebook',
 //   passport.authenticate('facebook', {
@@ -101,7 +93,7 @@ app.post('/signup/local', upload.fields([]), (req, res, next) => {
       return next(err);
     }
     if (msg) {
-      return res.json({ ...msg });
+      return res.json(msg);
     }
     if (!user) {
       return res.json({ msg: 'User creation failed.' });
@@ -128,7 +120,7 @@ app.post('/login/local', upload.fields([]), (req, res, next) => {
       return next(err);
     }
     if (msg) {
-      return res.json({ ...msg });
+      return res.json(msg);
     }
     if (!user) {
       return res.json({ msg: 'No user was found.' });
@@ -149,29 +141,13 @@ app.post('/login/local', upload.fields([]), (req, res, next) => {
   })(req, res, next);
 });
 
-// app.post(
-//   '/login/local',
-//   // https://github.com/expressjs/body-parser/issues/88
-//   upload.fields([]),
-//   passport.authenticate('local-login'),
-//   (req, res) => {
-//     res.status(200).json({ status: 'ok' });
-//   },
-// );
-
 app.get('/logout', (req, res) => {
   req.logout();
   res.clearCookie('id_token');
   res.redirect('/');
 });
 
-app.get('/getToken', (req, res) => {
-  res.status(200).json({ status: 'ok' });
-});
-
-//
 // Register API middleware
-// -----------------------------------------------------------------------------
 app.use(
   '/graphql',
   expressGraphQL(req => ({
@@ -182,14 +158,10 @@ app.use(
   })),
 );
 
-//
 // Gifs Upload
-// -----------------------------------------------------------------------------
 app.post('/add', upload.single('gifFile'), addController);
 
-//
 // Register server-side rendering middleware
-// -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
   try {
     const css = new Set();
@@ -277,9 +249,7 @@ app.get('*', async (req, res, next) => {
   }
 });
 
-//
 // Error handling
-// -----------------------------------------------------------------------------
 const pe = new PrettyError();
 pe.skipNodeFiles();
 pe.skipPackage('express');
@@ -300,14 +270,10 @@ app.use((err, req, res, next) => {
   res.send(`<!doctype html>${html}`);
 });
 
-//
-// Launch the server
-// -----------------------------------------------------------------------------
+// Start sequelize
 const promise = models.sync().catch(err => console.error(err.stack));
 
-//
-// 🎬 "3.2.1 ACTION"
-// -----------------------------------------------------------------------------
+// 🎬 Start server
 if (!module.hot) {
   promise.then(() => {
     app.listen(config.port, () => {
@@ -316,9 +282,7 @@ if (!module.hot) {
   });
 }
 
-//
 // 🌶 Hot Module Replacement
-// -----------------------------------------------------------------------------
 if (module.hot) {
   app.hot = module.hot;
   module.hot.accept('./router');

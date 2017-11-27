@@ -25,12 +25,36 @@ class Navigation extends React.Component {
     userJwt: {},
   };
 
+  constructor(props) {
+    super(props);
+    this.onKeyUp = this.onKeyUp.bind(this);
+    this.state = {
+      showAdminLink: false,
+      count: 0,
+    };
+  }
+
   componentDidMount = () => {
+    // Initiate Menu
     const { pathname } = history.location;
     this.props.historyPush({
       pathname,
       name: this.getPathName(pathname) || 'Home',
     });
+    document.body.addEventListener('keyup', this.onKeyUp); // Reveal admin link
+  };
+
+  componentWillUnmount = () => {
+    document.body.removeEventListener('keyup', this.onKeyUp); // Reveal admin link
+  };
+
+  // Reveal admin link
+  onKeyUp = evt => {
+    const { count } = this.state;
+    if (evt.keyCode === 16) {
+      if (count > 3) this.setState({ showAdminLink: true });
+      else this.setState({ count: count + 1 });
+    }
   };
 
   getPathName = name => {
@@ -65,6 +89,13 @@ class Navigation extends React.Component {
             active={name === 'Add'}
             onClick={this.handleClick}
           />
+          {this.state.showAdminLink && (
+            <Menu.Item
+              name="/admin"
+              active={name === 'Admin'}
+              onClick={this.handleClick}
+            />
+          )}
           {this.props.userJwt ? (
             <Menu.Item position="right">
               <a href="/logout">Logout</a>

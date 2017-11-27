@@ -1,13 +1,20 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Admin from './Admin';
+import { historyPush } from '../../actions/history';
 
 const title = 'Admin Page';
-const isAdmin = false;
 
-function action() {
+function action(props) {
+  const isAdmin =
+    props.store.getState().userJwt.email === process.env.ADMIN_EMAIL;
   if (!isAdmin) {
-    return { redirect: '/login' };
+    props.store.dispatch(
+      historyPush({
+        pathname: '/login',
+        name: 'Login',
+      }),
+    );
   }
 
   return {
