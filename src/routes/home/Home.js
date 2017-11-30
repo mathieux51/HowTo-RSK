@@ -12,6 +12,7 @@ import {
   Grid,
 } from 'semantic-ui-react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import { historyPush } from 'actions/history';
 import s from './Home.css';
 import SearchGifs from '../../components/SearchGifs/SearchGifs';
 import history from '../../history';
@@ -28,6 +29,7 @@ class Home extends React.Component {
       }),
     ).isRequired,
     fetch: func.isRequired,
+    historyPush: func.isRequired,
   };
   render() {
     const { gifs } = this.props;
@@ -69,7 +71,15 @@ class Home extends React.Component {
             {gifs &&
               gifs.map(gif => (
                 <Grid.Column key={gif.id}>
-                  <Card onClick={() => history.push(`gif/${gif.id}`)}>
+                  <Card
+                    centered
+                    onClick={() =>
+                      this.props.historyPush({
+                        pathname: `gif/${gif.id}`,
+                        name: 'Gif',
+                      })
+                    }
+                  >
                     <Image size="medium" src={gif.location} />
                     <Card.Content>{gif.title}</Card.Content>
                   </Card>
@@ -86,4 +96,11 @@ const mapStateToProps = state => ({
   userProfile: state.userProfile,
 });
 
-export default compose(withStyles(s), connect(mapStateToProps))(Home);
+const mapDispatchToProps = dispatch => ({
+  historyPush: _history => dispatch(historyPush(_history)),
+});
+
+export default compose(
+  withStyles(s),
+  connect(mapStateToProps, mapDispatchToProps),
+)(Home);

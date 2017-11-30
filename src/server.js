@@ -147,7 +147,7 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-// Register API middleware
+// Register graphql API
 app.use(
   '/graphql',
   expressGraphQL(req => ({
@@ -160,6 +160,13 @@ app.use(
 
 // Gifs Upload
 app.post('/add', upload.single('gifFile'), addController);
+
+// Gifs delete
+
+app.delete('admin/delete', (req, res) => {
+  console.warn(req.user);
+  console.warn(res);
+});
 
 // Register server-side rendering middleware
 app.get('*', async (req, res, next) => {
@@ -197,7 +204,6 @@ app.get('*', async (req, res, next) => {
     //     value: Date.now(),
     //   }),
     // );
-
     // Global (context) variables that can be easily accessed from any React component
     // https://facebook.github.io/react/docs/context.html
     const context = {

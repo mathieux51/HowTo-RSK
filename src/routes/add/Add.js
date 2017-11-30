@@ -86,7 +86,7 @@ class Add extends React.Component {
                   color={this.state.hasFile ? 'green' : undefined}
                 >
                   {this.state.isFetching ? (
-                    <Dimmer active>
+                    <Dimmer active style={{ minHeight: '100px' }}>
                       <Loader>Loading</Loader>
                     </Dimmer>
                   ) : (

@@ -5,8 +5,8 @@ import { setField } from '../../actions/setField';
 
 async function action(props) {
   const query = props.store.getState().userJwt
-    ? `{gifs {id,title,description,location,createdBy}userProfile {displayName,picture,gender,location,website}}`
-    : `{gifs {id,title,description,location,createdBy}}`;
+    ? '{gifs {id,title,description,location,createdBy}userProfile {displayName,picture,gender,location,website}}'
+    : '{gifs {id,title,description,location,createdBy}}';
 
   const resp = await props.fetch('/graphql', {
     body: JSON.stringify({

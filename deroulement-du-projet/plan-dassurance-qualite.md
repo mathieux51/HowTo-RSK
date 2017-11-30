@@ -1,0 +1,2 @@
+ Procédures adpotées pour contrôler la qualité du logiciel
+

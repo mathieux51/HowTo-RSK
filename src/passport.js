@@ -18,9 +18,10 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(async (id, done) => {
-  const user = await User.findById({ id });
-  done(null, user);
+passport.deserializeUser((id, done) => {
+  User.findById({ id })
+    .then(user => done(null, user))
+    .catch(err => done(err));
 });
 
 /**
@@ -43,6 +44,7 @@ passport.use(
         return done(null, {
           id: user.id,
           email: user.email,
+          admin: user.email === process.env.ADMIN_EMAIL ? true : undefined, // set admin
         });
       } catch (err) {
         // if (err.name === 'SequelizeValidationError')
