@@ -1,13 +1,11 @@
 # Summary
 
-## Docs
-
 ## Présentation du projet
 
 * [Objectifs](objectifs.md)
 * [Contexte](README.md)
 * [Description de l'existant](description-de-lexistant.md)
-* Critères d'acceptabilité du produit
+* [Critères d'acceptabilité du produit](criteres-dacceptabilite-du-produit.md)
 
 ## Expression des besoins
 
@@ -22,7 +20,7 @@
 
 ## Déroulement du projet
 
-* [Planication](deroulement-du-projet/planication.md)
+* [Planification](deroulement-du-projet/planication.md)
 * [Plan d'assurance qualité](deroulement-du-projet/plan-dassurance-qualite.md)
 * [Documentation](deroulement-du-projet/documentation.md)
 * [Responsabilités](deroulement-du-projet/responsabilites.md)
