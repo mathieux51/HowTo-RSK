@@ -1,3 +1,3 @@
-# HowTo
+# HowTo documentation 
 
-Test
+Ce qu'il faut dire pour présenter la documentation.
