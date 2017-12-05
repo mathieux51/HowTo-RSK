@@ -32,9 +32,13 @@ class Admin extends React.Component {
     historyPush: func.isRequired,
     setField: func.isRequired,
   };
-  state = {
-    selectedGifs: [],
-  };
+  constructor() {
+    super();
+    this.state = {
+      selectedGifs: [],
+    };
+    this.handleDelete = this.handleDelete.bind(this);
+  }
   handleToggle = (evt, { id }) => {
     let selectedGifs = null;
     const found = this.state.selectedGifs.find(x => x === id);
@@ -44,33 +48,33 @@ class Admin extends React.Component {
     this.setState({ selectedGifs });
   };
 
-  handleDelete = () => {
-    const { selectedGifs } = this.state;
-    if (selectedGifs.length) {
-      const body = new FormData();
-      body.append('selectedGifs', selectedGifs);
-      this.props
-        .fetch('admin/delete', {
+  async handleDelete() {
+    try {
+      const { selectedGifs } = this.state;
+      if (selectedGifs.length) {
+        const body = new FormData();
+        body.append('selectedGifs', selectedGifs);
+        let res = await this.props.fetch('admin/delete', {
           method: 'DELETE',
           credentials: 'same-origin', // https://stackoverflow.com/questions/34734208/cookies-not-being-stored-with-fetch,
           body,
-        })
-        .then(res => res.json())
-        .then(({ status }) => {
-          if (status === 'ok') {
-            const query = '{gifs {id,title,description,location,createdBy}}';
-            this.props.fetch('/graphql', {
-              body: JSON.stringify({
-                query,
-              }),
-            });
-          }
-        })
-        .then(res => res.json())
-        .then(({ data }) => data.gifs && this.props.setField(data.gifs, 'GIFS'))
-        .catch(console.error);
+        });
+        const { status } = await res.json();
+        if (status === 'ok') {
+          const query = '{gifs {id,title,description,location,createdBy}}';
+          res = await this.props.fetch('/graphql', {
+            body: JSON.stringify({
+              query,
+            }),
+          });
+          const { data } = await res.json();
+          this.props.setField(data.gifs, 'GIFS');
+        }
+      }
+    } catch (err) {
+      console.error(err);
     }
-  };
+  }
   render() {
     const { gifs } = this.props;
     return (
