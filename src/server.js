@@ -93,7 +93,7 @@ app.use(
 app.post('/add', upload.single('gifFile'), fileHandler, dbHandler);
 
 // Gifs delete
-app.delete('/admin/delete', upload.fields([]), deleteHandler);
+app.delete('/admin/delete', deleteHandler);
 
 // Register server-side rendering middleware
 app.get('*', async (req, res, next) => {

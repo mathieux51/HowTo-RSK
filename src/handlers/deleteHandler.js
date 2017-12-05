@@ -1,11 +1,15 @@
 import { Gif } from 'data/models';
 
-export default async function deleteHandler(req, res, next) {
+import { Op } from 'sequelize';
+
+export default function deleteHandler(req, res, next) {
   const isAdmin = req.user.email === process.env.ADMIN_EMAIL;
   if (isAdmin) {
     Gif.destroy({
       where: {
-        id: req.body.selectedGifs,
+        id: {
+          [Op.or]: req.body,
+        },
       },
     })
       .then(affectedRows => console.info('affectedRows:', affectedRows))

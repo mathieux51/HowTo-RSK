@@ -52,12 +52,12 @@ class Admin extends React.Component {
     try {
       const { selectedGifs } = this.state;
       if (selectedGifs.length) {
-        const body = new FormData();
-        body.append('selectedGifs', selectedGifs);
+        const headers = new Headers({ 'Content-Type': 'application/json' });
         let res = await this.props.fetch('admin/delete', {
           method: 'DELETE',
+          headers,
           credentials: 'same-origin', // https://stackoverflow.com/questions/34734208/cookies-not-being-stored-with-fetch,
-          body,
+          body: JSON.stringify(selectedGifs),
         });
         const { status } = await res.json();
         if (status === 'ok') {
