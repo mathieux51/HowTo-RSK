@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt from 'express-jwt';
@@ -34,6 +35,8 @@ import config from './config';
 
 const app = express();
 
+if (!__DEV__) app.use(compression());
+
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
 // user agent is not known.
 global.navigator = global.navigator || {};
@@ -59,9 +62,7 @@ app.use(expressjwtHandler);
 
 app.use(passport.initialize());
 
-if (__DEV__) {
-  app.enable('trust proxy');
-}
+if (__DEV__) app.enable('trust proxy');
 
 // Facebook login
 // app.get('/login/facebook', passport.authenticate('facebook', {scope: ['email', 'user_location'], session: false}));

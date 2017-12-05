@@ -51,8 +51,9 @@ async function render() {
       await writeFile(dist, text);
       const time = timeEnd.getTime() - timeStart.getTime();
       console.info(
-        `#${index +
-          1} ${dist} => ${response.status} ${response.statusText} (${time} ms)`,
+        `#${index + 1} ${dist} => ${response.status} ${
+          response.statusText
+        } (${time} ms)`,
       );
     }),
   );

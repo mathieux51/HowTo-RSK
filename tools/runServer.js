@@ -24,7 +24,7 @@ function runServer() {
       process.stdout.write(data);
 
       if (match) {
-        server.host = match[1];
+        [, server.host] = match;
         server.stdout.removeListener('data', onStdOut);
         server.stdout.on('data', x => process.stdout.write(x));
         pending = false;

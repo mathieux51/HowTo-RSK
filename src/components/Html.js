@@ -35,6 +35,10 @@ class Html extends React.Component {
           <title>{title}</title>
           <meta name="description" content={description} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css"
+          />
           {scripts.map(script => (
             <link key={script} rel="preload" href={script} as="script" />
           ))}
@@ -58,8 +62,9 @@ class Html extends React.Component {
               dangerouslySetInnerHTML={{
                 __html:
                   'window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;' +
-                  `ga('create','${config.analytics
-                    .googleTrackingId}','auto');ga('send','pageview')`,
+                  `ga('create','${
+                    config.analytics.googleTrackingId
+                  }','auto');ga('send','pageview')`,
               }}
             />
           )}

@@ -24,6 +24,7 @@ const news = {
         .then(response => response.json())
         .then(data => {
           if (data.status === 'ok') {
+            // eslint-disable-next-line prefer-destructuring
             items = data.items;
           }
 

@@ -13,6 +13,7 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "classnames": "^2.2.5",
+    "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
     "dotenv": "^4.0.0",
@@ -162,6 +163,9 @@
       "/build/updates/",
       "/build/server.js"
     ]
+  },
+  "prettier": {
+    "printWidth": 80
   },
   "lint-staged": {
     "*.{js,jsx}": ["eslint --fix", "git add"],
