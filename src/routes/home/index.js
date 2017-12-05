@@ -19,12 +19,13 @@ async function action(props) {
     console.error('Failed to load gifs and/or userProfile.');
   if (data.userProfile)
     props.store.dispatch(setField(data.userProfile, 'USER_PROFILE'));
+  if (data.gifs) props.store.dispatch(setField(data.gifs, 'GIFS'));
   return {
     chunks: ['home'],
     title: 'Home',
     component: (
       <Layout>
-        <Home gifs={data.gifs} fetch={props.fetch} />
+        <Home fetch={props.fetch} />
       </Layout>
     ),
   };

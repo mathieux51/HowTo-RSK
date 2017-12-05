@@ -3,6 +3,7 @@ import userJwt from './userJwt';
 import userProfile from './userProfile';
 import userErrorMessages from './userErrorMessages';
 import history from './history';
+import gifs from './gifs';
 // import runtime from './runtime';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
   userProfile,
   history,
   userErrorMessages,
+  gifs,
   // runtime,
 });

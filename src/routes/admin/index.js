@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Admin from './Admin';
 import { historyPush } from '../../actions/history';
+import { setField } from '../../actions/setField';
 
 const title = 'Admin Page';
 
@@ -23,14 +24,14 @@ async function action(props) {
     }),
   });
   const { data } = await resp.json();
-  if (!data || !data.gifs)
-    console.error('Failed to load gifs and/or userProfile.');
+  if (!data || !data.gifs) console.error('Failed to load gifs.');
+  if (data.gifs) props.store.dispatch(setField(data.gifs, 'GIFS'));
   return {
     chunks: ['admin'],
     title,
     component: (
       <Layout>
-        <Admin title={title} gifs={data.gifs} />
+        <Admin title={title} fetch={props.fetch} />
       </Layout>
     ),
   };

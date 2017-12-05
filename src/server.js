@@ -2,14 +2,23 @@ import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
+import expressJwt from 'express-jwt';
 import expressGraphQL from 'express-graphql';
-import jwt from 'jsonwebtoken';
 import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
-import { addController, upload } from 'controllers/addController';
+import multer from 'multer';
+import {
+  dbHandler,
+  deleteHandler,
+  fileHandler,
+  signupHandler,
+  loginHandler,
+  expressjwtHandler,
+  // fbLoginHandler,
+} from 'handlers';
+
 import App from './components/App';
 import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
@@ -46,15 +55,7 @@ app.use(
 );
 
 // Error handler for express-jwt
-app.use((err, req, res, next) => {
-  // eslint-disable-line no-unused-vars
-  if (err instanceof Jwt401Error) {
-    console.error('[express-jwt-error]', req.cookies.id_token);
-    // `clearCookie`, otherwise user can't use web-app until cookie expires
-    res.clearCookie('id_token');
-  }
-  next(err);
-});
+app.use(expressjwtHandler);
 
 app.use(passport.initialize());
 
@@ -63,83 +64,13 @@ if (__DEV__) {
 }
 
 // Facebook login
-// app.get(
-//   '/login/facebook',
-//   passport.authenticate('facebook', {
-//     scope: ['email', 'user_location'],
-//     session: false,
-//   }),
-// );
-//
-// app.get(
-//   '/login/facebook/return',
-//   passport.authenticate('facebook', {
-//     failureRedirect: '/login',
-//     // failureFlash: 'Facebook authentification failed',
-//     // successFlash: 'Successfully logged in with Facebook',
-//     session: false,
-//   }),
-//   (req, res) => {
-//     const expiresIn = 60 * 60 * 24 * 180; // 180 days
-//     const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
-//     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
-//     res.redirect('/');
-//   },
-// );
+// app.get('/login/facebook', passport.authenticate('facebook', {scope: ['email', 'user_location'], session: false}));
+// app.get('/login/facebook/return', passport.authenticate('facebook', {failureRedirect: '/login', session: false}), fbLoginHandler);
 
-app.post('/signup/local', upload.fields([]), (req, res, next) => {
-  passport.authenticate('local-signup', (err, user, msg) => {
-    if (err) {
-      return next(err);
-    }
-    if (msg) {
-      return res.json(msg);
-    }
-    if (!user) {
-      return res.json({ msg: 'User creation failed.' });
-    }
-    req.logIn(user, _err => {
-      if (_err) {
-        return next(_err);
-      }
-      const expiresIn = 60 * 10; // 10min
-      const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
-      res.cookie('id_token', token, {
-        maxAge: 1000 * expiresIn,
-        httpOnly: true, // Protect cookie on the client side
-      });
-      return res.json({ user: req.user });
-    });
-    return res.status(200).json({ status: 'ok' });
-  })(req, res, next);
-});
+const upload = multer();
+app.post('/signup/local', upload.fields([]), signupHandler);
 
-app.post('/login/local', upload.fields([]), (req, res, next) => {
-  passport.authenticate('local-login', (err, user, msg) => {
-    if (err) {
-      return next(err);
-    }
-    if (msg) {
-      return res.json(msg);
-    }
-    if (!user) {
-      return res.json({ msg: 'No user was found.' });
-    }
-    req.logIn(user, _err => {
-      if (_err) {
-        return next(_err);
-      }
-      const expiresIn = 60 * 10; // 10min
-      const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
-      res.cookie('id_token', token, {
-        maxAge: 1000 * expiresIn,
-        httpOnly: true, // Protect cookie on the client side
-      });
-      return res.json({ user: req.user });
-    });
-    return res.status(200).json({ status: 'ok' });
-  })(req, res, next);
-});
+app.post('/login/local', upload.fields([]), loginHandler);
 
 app.get('/logout', (req, res) => {
   req.logout();
@@ -159,14 +90,10 @@ app.use(
 );
 
 // Gifs Upload
-app.post('/add', upload.single('gifFile'), addController);
+app.post('/add', upload.single('gifFile'), fileHandler, dbHandler);
 
 // Gifs delete
-
-app.delete('admin/delete', (req, res) => {
-  console.warn(req.user);
-  console.warn(res);
-});
+app.delete('/admin/delete', upload.fields([]), deleteHandler);
 
 // Register server-side rendering middleware
 app.get('*', async (req, res, next) => {
@@ -191,6 +118,7 @@ app.get('*', async (req, res, next) => {
       userJwt: req.user || null,
       userProfile: null,
       history: {},
+      gifs: [],
     };
 
     const store = configureStore(initialState, {

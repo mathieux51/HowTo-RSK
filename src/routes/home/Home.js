@@ -68,23 +68,22 @@ class Home extends React.Component {
         </div>
         <div className={s.margin}>
           <Grid container columns={3} doubling stackable centered>
-            {gifs &&
-              gifs.map(gif => (
-                <Grid.Column key={gif.id}>
-                  <Card
-                    centered
-                    onClick={() =>
-                      this.props.historyPush({
-                        pathname: `gif/${gif.id}`,
-                        name: 'Gif',
-                      })
-                    }
-                  >
-                    <Image size="medium" src={gif.location} />
-                    <Card.Content>{gif.title}</Card.Content>
-                  </Card>
-                </Grid.Column>
-              ))}
+            {gifs.map(gif => (
+              <Grid.Column key={gif.id}>
+                <Card
+                  centered
+                  onClick={() =>
+                    this.props.historyPush({
+                      pathname: `gif/${gif.id}`,
+                      name: 'Gif',
+                    })
+                  }
+                >
+                  <Image size="medium" src={gif.location} />
+                  <Card.Content>{gif.title}</Card.Content>
+                </Card>
+              </Grid.Column>
+            ))}
           </Grid>
         </div>
       </Container>
@@ -94,6 +93,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   userProfile: state.userProfile,
+  gifs: state.gifs,
 });
 
 const mapDispatchToProps = dispatch => ({

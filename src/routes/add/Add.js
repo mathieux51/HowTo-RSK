@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { func } from 'prop-types';
@@ -15,11 +15,10 @@ import {
 } from 'semantic-ui-react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { historyPush } from 'actions/history';
-// import debounce from 'lodash/debounce';
 
 import s from './Add.css';
 
-class Add extends React.Component {
+class Add extends Component {
   static propTypes = {
     fetch: func.isRequired,
     historyPush: func.isRequired,
