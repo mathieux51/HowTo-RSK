@@ -39,7 +39,7 @@
   * [4. Développer des pages web en lien avec une base de données](III.realisation/4.developper-pages-web-acces-donnees/readme.md)
   * [5. Développer des composants d'accès aux données](III.realisation/5.developper-composants-acces-donnees/readme.md)
 
-  * [6. Audit UX]()
+  * [6. Audit UX](III.realisation/6.audit-ux/readme.md)
 
     * [Création d'un persona](III.realisation/6.audit-ux/1.creation-persona/readme.md)
     * [Parcours expérience](III.realisation/6.audit-ux/2.parcours-experience/readme.md)

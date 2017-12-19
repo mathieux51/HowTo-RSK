@@ -7,9 +7,9 @@ HowTo is a web platform that is meant to facilitate in the sharing of informatio
 * Second, you upload the gif.
 * Third, you share it or you can just leave so it will be available as a future ressource for anyone who needs it.
 
-HowTo was build to be fast on mobile devices. It only takes few seconds to load and use the platform.
+HowTo was built to be fast on mobile devices. It only takes few seconds to load and use the platform.
 
-Coming soon is a new the feature for uploading video via your phone's camera in order to have an optimised gif.
+Coming soon is a new feature for uploading video via your phone's camera in order to have an optimised gif.
 
 # Dossier de synthèse de pratique professionnelle (DSPP)
 
