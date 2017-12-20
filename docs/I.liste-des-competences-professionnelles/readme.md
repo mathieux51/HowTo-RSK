@@ -1,6 +1,6 @@
 # Liste des compétences professionnelles
 
-En vue de réaliser ce projet, nous serons amené à réaliser diverses tâches. Ces dernières aboutiront à la réalisation des objectifs suivants:
+En vue de réaliser ce projet, nous serons amenés à réaliser diverses tâches. Ces dernières aboutiront à la réalisation des objectifs suivants:
 
 * Rédiger un cahier des charges
 * Maquetter une application
@@ -13,4 +13,5 @@ En vue de réaliser ce projet, nous serons amené à réaliser diverses tâches.
 * Utiliser l’anglais dans son activité professionnelle en informatique
 * Réaliser un audit UX
 
-Notons que la liste ci-dessus n'est pas exhaustive mais ciblé sur les compétences requises à l'acquisition du titre professionnel.
+Notons que la liste ci-dessus n'est pas exhaustive mais ciblée sur les compétences requises à l'acquisition du titre professionnel.
+
