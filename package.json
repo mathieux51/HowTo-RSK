@@ -194,6 +194,7 @@
     "serve": "babel-node tools/run runServer",
     "start": "babel-node tools/run start",
     "dev": "babel-node $NODE_DEBUG_OPTION tools/run start --inspect",
-    "docs": "gitbook serve"
+    "docs": "gitbook serve",
+    "pdf": "gitbook pdf ./ ./docs/HowTo-documentation.pdf"
   }
 }
