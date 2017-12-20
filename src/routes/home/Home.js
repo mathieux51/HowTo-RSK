@@ -72,6 +72,7 @@ class Home extends React.Component {
               <Grid.Column key={gif.id}>
                 <Card
                   centered
+                  onDoubleClick={() => {}}
                   onClick={() =>
                     this.props.historyPush({
                       pathname: `gif/${gif.id}`,

@@ -3,7 +3,15 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { func } from 'prop-types';
 import debounce from 'lodash/debounce';
-import { Grid, Button, Form, Segment, Icon, Message } from 'semantic-ui-react';
+import {
+  Container,
+  Grid,
+  Button,
+  Form,
+  Segment,
+  Icon,
+  Message,
+} from 'semantic-ui-react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { historyPush } from '../../actions/history';
 import { setField } from '../../actions/setField';
@@ -72,7 +80,7 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div className={s.container}>
+      <Container>
         <Grid
           textAlign="center"
           style={{ height: '100%' }}
@@ -175,7 +183,7 @@ class Login extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </div>
+      </Container>
     );
   }
 }
