@@ -10,15 +10,9 @@ const User = Model.define(
       defaultValue: DataType.UUIDV1,
       primaryKey: true,
     },
-
     email: {
       type: DataType.STRING(255),
       validate: { isEmail: true },
-    },
-
-    emailConfirmed: {
-      type: DataType.BOOLEAN,
-      defaultValue: false,
     },
     password: {
       type: DataType.STRING,
@@ -27,13 +21,14 @@ const User = Model.define(
   },
   {
     indexes: [{ fields: ['email'] }],
+    underscored: true,
   },
 );
 
 User.prototype.generateHash = pwd => bcrypt.hash(pwd, bcrypt.genSaltSync(8));
 
-User.prototype.validPassword = function validPassword(password) {
-  return bcrypt.compare(password, this.password);
+User.prototype.validPassword = function validPassword(pwd) {
+  return bcrypt.compare(pwd, this.password);
 };
 
 export default User;

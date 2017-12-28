@@ -25,7 +25,7 @@ class Home extends React.Component {
         title: string.isRequired,
         location: string.isRequired,
         description: string,
-        createdBy: string,
+        created_by: string,
       }),
     ).isRequired,
     fetch: func.isRequired,

@@ -8,7 +8,7 @@ export default async function dbHandler(req, res, next) {
       title: req.body.title,
       description: req.body.description || '',
       location: `gifs/${res.locals.fileName}`,
-      createdBy: req.user.email,
+      created_by: req.user.id,
     })
       .then(() => res.json({ id }))
       .catch(next);

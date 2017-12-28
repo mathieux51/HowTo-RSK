@@ -25,7 +25,7 @@ class Admin extends React.Component {
         title: string.isRequired,
         location: string.isRequired,
         description: string,
-        createdBy: string,
+        created_by: string,
       }),
     ).isRequired,
     fetch: func.isRequired,
@@ -61,7 +61,7 @@ class Admin extends React.Component {
         });
         const { status } = await res.json();
         if (status === 'ok') {
-          const query = '{gifs {id,title,description,location,createdBy}}';
+          const query = '{gifs {id,title,description,location,created_by}}';
           res = await this.props.fetch('/graphql', {
             body: JSON.stringify({
               query,

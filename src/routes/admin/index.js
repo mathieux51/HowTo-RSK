@@ -17,7 +17,7 @@ async function action(props) {
     );
   }
 
-  const query = '{gifs {id,title,description,location,createdBy}}';
+  const query = '{gifs {id,title,description,location,created_by}}';
   const resp = await props.fetch('/graphql', {
     body: JSON.stringify({
       query,

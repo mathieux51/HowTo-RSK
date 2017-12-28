@@ -1,29 +1,71 @@
 # TL;DR 🇺🇸
 
-This project was originally started with the goal of obtaining a technical diploma in Web development. The project's name is **HowTo**.
-HowTo is a web platform that is meant to facilitate in the sharing of information. Let's imagine a person, a manager, that has to explain a very simple concept multiple times a day. The manager doesn't really want to create a tutorial for this because it's not worth the effort needed for such a casual explanation. However such multiple explanations on the part of the manager require time and energy that results in lost productivity. A situation that is very frustrating. HowTo can help the manager solve this with its fast and simple web application.
+This platform, **HowTo**, began as a project for a technical degree in web development. **HowTo** is a web platform that facilitates the sharing of information. Imagine a person, a manager, that has to explain a simple concept multiple times a day. Creating a tutorial for such a casual explanation isn’t worth the effort, but these multiple explanations on the part of the manager require both time and energy. The result? Lost productivity and a frustrated manager.  **HowTo** solves this problem with its simple and efficient web application.
 
-* First, you create a gif. This is easily done via a chrome plugin.
-* Second, you upload the gif.
-* Third, you share it or you can just leave so it will be available as a future ressource for anyone who needs it.
+1. Create a gif
+This is easily done via a chrome plugin that captures the user’s screen
+2. Upload the gif
+3. Share the gif, or leave it on **HowTo** as a future ressource for anyone who needs it
 
-HowTo was built to be fast on mobile devices. It only takes few seconds to load and use the platform.
+**HowTo** is built to be fast on mobile devices. It only takes few seconds to load and use the platform.
 
-Coming soon is a new feature for uploading video via your phone's camera in order to have an optimised gif.
+Coming soon a new feature that allows users to upload videos via their phone's camera for an optimised gif.
+
+
 
 # Dossier de synthèse de pratique professionnelle (DSPP)
 
-Suite aux directives données dans le [Répertoire National des Certifications Professionnelles](http://www.rncp.cncp.gouv.fr/grand-public/visualisationFiche?format=fr&fiche=5927), j'ai réalisé mon DSPP selon le plan suivant:
+Lien vers le gitbook : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
 
-* [I. Compétences professionnelles](I.liste-des-competences-professionnelles/readme.md)
-* [II. Cahier des charges](II.cahier-des-charges/1.presentation-du-project/1.contexte.md)
-* [III. La réalisation](III.realisation/1.maquette-application/1.mockups/readme.md)
-* [IV. Notice d'utilisation](IV.notice-dutilisation/readme.md)
+## Table des matières 
 
-Lien vers le [DSPP](https://mathieux51.gitbooks.io/howto/)
+Suite aux directives données dans le [Répertoire National des Certifications Professionnelles](http://www.rncp.cncp.gouv.fr/grand-public/visualisationFiche?format=fr&fiche=5927), j'ai  décidé d'utiliser le plan suivant :
 
-# N.B.
+### [I. Compétences professionnelles](I.liste-des-competences-professionnelles/readme.md)
 
-* Nouveau dans l'[écriture inclusive](http://www.ecriture-inclusive.fr/), j'invite le lecteur à me signaler d'éventuelles erreurs.
+### [II. Cahier des charges]()
+	
+##### Présentation du projet
 
-* Le lecteur pourra utiliser les flèches de son clavier pour naviguer de page en page
+###### [II.1.1. Contexte : Haas & Milan](II.cahier-des-charges/1.presentation-du-project/1.contexte.md)
+###### [II.1.2. Objectifs](II.cahier-des-charges/1.presentation-du-project/2.objectifs.md)
+###### [II.1.3. Description de l'existant](II.cahier-des-charges/1.presentation-du-project/3.description-de-lexistant.md)
+###### [II.1.4. Critères d'acceptabilité du produit](II.cahier-des-charges/1.presentation-du-project/4.criteres-dacceptabilite-du-produit.md)
+
+##### Expression des besoins
+
+###### [II.2.1. Besoins fonctionnels](II.cahier-des-charges//2.expression-des-besoins/1.besoins-fonctionnels.md)
+###### [II.2.2. Besoins non fonctionnels](II.cahier-des-charges/2.expression-des-besoins/2.besoins-non-fonctionnels.md)
+
+
+##### Contraintes
+
+###### [II.3.1. Coûts](II.cahier-des-charges/3.contraintes/1.couts.md)
+###### [II.3.2. Délais](II.cahier-des-charges/3.contraintes/2.delais.md)
+###### [II.3.3. Autres contraintes](II.cahier-des-charges/3.contraintes/3.autres-contraintes.md)
+
+##### Déroulement du projet
+
+###### [II.4.1. Planification](II.cahier-des-charges/4.deroulement-du-projet/1.planication.md)
+
+### [III. La réalisation]()
+
+##### Maquetter une application
+
+###### [III.1.1. Mockups](III.realisation/1.maquette-application/1.mockups/readme.md)
+###### [III.1.2. Prototypes](III.realisation/1.maquette-application/2.prototypes/readme.md)
+
+##### [III.2. Conservoir une base de données](III.realisation/2.concevoir-base-de-donnees/readme.md)
+##### [III.3. Mettre en place une base de données](III.realisation/3.mettre-en-place-base-donnees/readme.md)
+##### [III.4. Développer des pages web en lien avec une base de données](III.realisation/4.developper-pages-web-acces-donnees/readme.md)
+##### [III.5. Développer des composants d'accès aux données](III.realisation/5.developper-composants-acces-donnees/readme.md)
+
+##### Développer une interface utilisateur
+
+###### [III.6.1. Création d'un persona](III.realisation/6.Developper-une-interface-utilisateur/1.creation-persona/readme.md)
+###### [III.6.2. Parcours expérience](III.realisation/6.Developper-une-interface-utilisateur/2.parcours-experience/readme.md)
+###### 🚧 Prototypage, Modification fonctionnel à appliquer
+###### 🚧 Audits ergonomique de cloture
+
+### [IV. Notice d'utilisation](IV.notice-dutilisation/readme.md)
+

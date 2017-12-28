@@ -13,7 +13,7 @@ const GifType = new ObjectType({
     title: { type: new NonNull(StringType) },
     description: { type: StringType },
     location: { type: new NonNull(StringType) },
-    createdBy: { type: StringType },
+    created_by: { type: StringType },
   },
 });
 

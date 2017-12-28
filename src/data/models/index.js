@@ -26,9 +26,14 @@ User.hasOne(UserProfile, {
   onDelete: 'cascade',
 });
 
+User.hasMany(Gif, {
+  foreignKey: 'created_by',
+  sourceKey: 'id',
+});
+
 function sync(...args) {
   return sequelize.sync(...args);
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile, Gif };
+export { User, Gif, UserLogin, UserClaim, UserProfile };
