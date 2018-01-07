@@ -55,7 +55,7 @@ Suite aux directives données dans le [Répertoire National des Certifications P
 ###### [III.1.1. Mockups](III.realisation/1.maquette-application/1.mockups/readme.md)
 ###### [III.1.2. Prototypes](III.realisation/1.maquette-application/2.prototypes/readme.md)
 
-##### [III.2. Conservoir une base de données](III.realisation/2.concevoir-base-de-donnees/readme.md)
+##### [III.2. Consevoir une base de données](III.realisation/2.concevoir-base-de-donnees/readme.md)
 ##### [III.3. Mettre en place une base de données](III.realisation/3.mettre-en-place-base-donnees/readme.md)
 ##### [III.4. Développer des pages web en lien avec une base de données](III.realisation/4.developper-pages-web-acces-donnees/readme.md)
 ##### [III.5. Développer des composants d'accès aux données](III.realisation/5.developper-composants-acces-donnees/readme.md)
@@ -64,8 +64,8 @@ Suite aux directives données dans le [Répertoire National des Certifications P
 
 ###### [III.6.1. Création d'un persona](III.realisation/6.Developper-une-interface-utilisateur/1.creation-persona/readme.md)
 ###### [III.6.2. Parcours expérience](III.realisation/6.Developper-une-interface-utilisateur/2.parcours-experience/readme.md)
-###### 🚧 Prototypage, Modification fonctionnel à appliquer
-###### 🚧 Audits ergonomique de cloture
+###### 🚧 Prototypage, Modification fonctionnelle à appliquer
+###### 🚧 Audits ergonomiques de clôture
 
 ### [IV. Notice d'utilisation](IV.notice-dutilisation/readme.md)
 

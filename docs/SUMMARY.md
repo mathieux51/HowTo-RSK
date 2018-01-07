@@ -42,7 +42,7 @@
 
   * [III.6.1. Création d'un persona](III.realisation/6.Developper-une-interface-utilisateur/1.creation-persona/readme.md)
   * [III.6.2. Parcours expérience](III.realisation/6.Developper-une-interface-utilisateur/2.parcours-experience/readme.md)
-  * 🚧 Prototypage, Modification fonctionnel à appliquer
-  * 🚧 Audits ergonomique de cloture
+  *  🚧 Prototypage, Modification fonctionnelle à appliquer
+  * 🚧 Audits ergonomiques de clôture
 
 * [IV. Notice d'utilisation](IV.notice-dutilisation/readme.md)
