@@ -10,7 +10,7 @@ Nous pouvons déjà enlever les solutions payantes de cette liste à savoir : Or
 
 ### Sequelize : Mapping Object Relationnel (ORM)
 
-Un [ORM](https://fr.wikipedia.org/wiki/Mapping_objet-relationnel) est une technique qui nous permet de créer une base de données à partir des objets du language utilisés. La critique principale contre les ORM est orientée sur 2 points : complexité et performance. En contre partie un ORM offre l'implémentation d'une base de données avec les bonnes pratiques et une réduction du code côté SQL. On pourra retrouver un utilisateur via son `id` comme : 
+Un [ORM](https://fr.wikipedia.org/wiki/Mapping_objet-relationnel) est une technique qui nous permet de créer une base de données à partir des objets du language utilisés. La critique principale contre les ORM est orientée sur deux points : complexité et performance. En contre partie un ORM offre l'implémentation d'une base de données avec les bonnes pratiques et une réduction du code côté SQL. On pourra retrouver un utilisateur via son `id` comme : 
 
 ```js
 const Sequelize = require('sequelize')
@@ -19,7 +19,7 @@ const User = sequelize.define('User', ...)
 const user = await User.findById({ id })
 ```
 
-La même requête en utilisant les templates de chaînes de caractères javascript et postgres ressemblerai à ceci :
+La même requête en utilisant les templates de chaînes de caractères javascript et Postgres ressemblerai à ceci :
 
 ```js
 const { Client } = require('pg')
@@ -38,7 +38,7 @@ Ces différents petits avantages ont orienté mon choix vers l'utilisation de l'
 
 ![Tendance des bases de données gratuites sur db-engines.com](../../img/db-engine-ranking-free.png)
 
-MySQL semble être le choix par défaut lorsqu'on regarde ce graphique. D'expérience, j'ai souvent passé du temps à essayer de faire en sorte que MySQL fasse ce que les autres [RDBMS ( ou DBMS)](https://stackoverflow.com/questions/18419137/what-is-the-difference-between-dbms-and-rdbms) font par défaut. Je pense par exemple à l'utilisation de la contrainte `CHECK` qui [ne fonctionne pas](https://stackoverflow.com/questions/2115497/check-constraint-in-mysql-is-not-working) sur MySQL malgré que le mot soit compris. Cassandra offre une grande vitesse d'écriture ainsi qu'un language de requête proche de SQL nommé 'CQL'. N'ayant pas des besoins en terme de rapidité d'écriture de fichiers, je n'ai pas choisi Cassandra. Les deux options restantes sont Postgres et SQLite et elles conviennent parfaitement à mes besoins. En effet, pour le développement je peux utiliser SQLite (DBMS) et pour la production je peux utiliser Postgres en utilisant des solutions comme [ElephantSQL](https://www.elephantsql.com/) ou [Heroku Postgres](https://www.heroku.com/postgres).
+MySQL semble être le choix par défaut lorsqu'on regarde ce graphique. D'expérience, j'ai souvent passé du temps à essayer de faire en sorte que MySQL fasse ce que les autres [RDBMS ( ou DBMS)](https://stackoverflow.com/questions/18419137/what-is-the-difference-between-dbms-and-rdbms) font par défaut. Je pense par exemple à l'utilisation de la contrainte `CHECK` qui [ne fonctionne pas](https://stackoverflow.com/questions/2115497/check-constraint-in-mysql-is-not-working) sur MySQL malgré que le mot soit compris. Cassandra offre une grande vitesse d'écriture ainsi qu'un langage de requête proche de SQL nommé 'CQL'. N'ayant pas des besoins en terme de rapidité d'écriture de fichiers, je n'ai pas choisi Cassandra. Les deux options restantes sont Postgres et SQLite et elles conviennent parfaitement à mes besoins. En effet, pour le développement je peux utiliser SQLite (DBMS) et pour la production je peux utiliser Postgres en utilisant des solutions comme [ElephantSQL](https://www.elephantsql.com/) ou [Heroku Postgres](https://www.heroku.com/postgres).
 
 N.B. J'ai fait le choix de ne pas m'orienter vers les technologies NoSQL par manque de connaissances dans ce domaine. 
 

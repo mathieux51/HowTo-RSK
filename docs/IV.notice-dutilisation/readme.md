@@ -21,7 +21,7 @@ La deuxième option est la recherche par mot clé. Pour réaliser cette recherch
 
 ![Recherche par mot clé](../img/recherche-mot-cle.png)
 
-Puis commencer à taper un mots clé. Des propositions vous seront suggérées. 
+Puis commencer à taper un mot clé. Des propositions vous seront suggérées. 
 
 > Si suite à votre recherche les mots `No result found` apparaissent cela signifie qu'aucun résultat n'a été trouvé dans le titre et dans la description des gifs présents en base de données.
 
@@ -38,7 +38,7 @@ Maintenant que nous sommes sûrs que nous avons un gif à téléverser, nous pou
 
 ![Onglet login](../img/login.png)
 
-Si vous possédez un compte, vous pouvez vous enregistrer directement, sinon il vous faut créer un compte en cliquant sur `Signup`. Taper un courriel valide aussi qu'un mot de passe. 
+Si vous possédez un compte, vous pouvez vous enregistrer directement, sinon il vous faut créer un compte en cliquant sur `Signup`. Taper un email valide aussi qu'un mot de passe. 
 
-Si la création de compte ou l'enregistrement du compte fonctionne, vous serez redirigé vers l'onglet `Add` en vue de sélectionner le gif que vous voulez téléverser. Cliquer sur le grand carré noir, une fenêtre système vous permettant de sélectionner le gif apparaîtra. Sélectionner le gif puis ajouter un titre dans le champ `title`. Vous pouvez optionnellement ajouter une description. Pour commencer le téléversement cliquer sur `Submit`. Dans le cas où le téléversement a fonctionné, vous serez redirigé vers une vue ou vous verrez votre gif prendre approximativement toute la largeur de l'écran. 
+Si la création de compte ou l'enregistrement du compte fonctionne, vous serez redirigé vers l'onglet `Add` en vue de sélectionner le gif que vous voulez téléverser. Cliquer sur le grand carré noir, une fenêtre système vous permettant de sélectionner le gif apparaîtra. Sélectionner le gif puis ajouter un titre dans le champ `title`. Vous pouvez optionnellement ajouter une description. Pour commencer le téléversement cliquer sur `Submit`. Dans le cas où le téléversement a fonctionné, vous serez redirigé vers une vue où vous verrez votre gif prendre approximativement toute la largeur de l'écran. 
 

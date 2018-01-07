@@ -30,7 +30,7 @@ Depuis 2015 nous pouvons utiliser l'API `fetch`. D'après [MDN](https://develope
 
 > "L'API Fetch fournit une interface pour la récupération de ressources. Elle paraîtra familière à tout utilisateur de XMLHttpRequest, mais cette nouvelle API propose néanmoins un ensemble de fonctionnalités plus souples et plus puissantes." [Source](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API)
 
-Le déclencheur de l'appel de données est le router. Une fois la route demandée, une requête de type `fetch` est effectuée. Nous pouvons par exemple regarder comment sont fetchées les données sur la page Home :
+Le déclencheur de l'appel de données est le router. Une fois la route demandée, une requête de type `fetch` est effectuée. Nous pouvons par exemple regarder comment sont "fetchées" les données sur la page Home :
 
 ```js
 const query = '{gifs {id,title,description,location,created_by}}'

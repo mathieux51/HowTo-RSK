@@ -1,14 +1,14 @@
 # Résultats que le projet doit atteindre.
 
-Le projet doit permettre le partage d’information de façon instantanée et efficace. 
+Le projet doit permettre le partage d’information de façon instantanée et efficace.
 
 ## Choix du format de partage
 
-Youtube a réellement changé la façon dont nous pouvons apprendre. Comprenant un très grand nombre de tutorial dans des domaines très variés, cette plateforme s’est imposé face aux autres. 
+Youtube a réellement changé la façon dont nous pouvons apprendre. Comprenant un très grand nombre de tutorial dans des domaines très variés, cette plateforme s’est imposé face aux autres.
 
 
 
-## 
+##
 
-Ce projet doit permettre l’upload de fichiers gifs. Afin que la plateforme soit sécurisé il sera nécessaire que l'upload de données soit protégé un formulaire d'authentification. La visualisation des gifs  
-proposé une plateforme simple à ses employés pour qu'ils puissent déposé une démonstration visuel des tâches qu'ils sont amenés à réaliser. 
+Ce projet doit permettre téléverser de fichiers gifs. Afin que la plateforme soit sécurisé il sera nécessaire que le téléversement de données soit protégé un formulaire d'authentification. La visualisation des gifs
+proposé une plateforme simple à ses employés pour qu'ils puissent déposé une démonstration visuel des tâches qu'ils sont amenés à réaliser.
