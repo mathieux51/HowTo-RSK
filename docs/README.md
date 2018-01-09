@@ -1,4 +1,6 @@
-# TL;DR 🇺🇸
+# HowTo
+
+## TL;DR 🇺🇸
 
 This platform, **HowTo**, began as a project for a technical degree in web development. **HowTo** is a web platform that facilitates the sharing of information. Imagine a person, a manager, that has to explain a simple concept multiple times a day. Creating a tutorial for such a casual explanation isn’t worth the effort, but these multiple explanations on the part of the manager require both time and energy. The result? Lost productivity and a frustrated manager.  **HowTo** solves this problem with its simple and efficient web application.
 
@@ -11,11 +13,13 @@ This is easily done via a chrome plugin that captures the user’s screen
 
 Coming soon a new feature that allows users to upload videos via their phone's camera for an optimised gif.
 
+## Dossier professionnel
 
+Lien vers docs.google : [https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_0cGcsX_H9I_dvxPGqntWKL6s](https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_0cGcsX_H9I_dvxPGqntWKL6s)
 
-# Dossier de projet
+## Dossier de projet
 
-Lien vers le gitbook : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
+**📖 Lien vers le gitbook** : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
 
 ## Table des matières 
 
