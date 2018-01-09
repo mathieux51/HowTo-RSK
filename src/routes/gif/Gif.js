@@ -14,6 +14,7 @@ class Gif extends React.Component {
     }).isRequired,
   };
 
+  shouldComponentUpdate = () => false;
   render() {
     return (
       <Container>
@@ -26,3 +27,20 @@ class Gif extends React.Component {
 }
 
 export default withStyles(s)(Gif);
+
+// eslint-disable-next-line
+{
+  /* <video
+          autoPlay="autoplay"
+          loop="loop"
+          poster={`/${this.props.gif.location}`}
+          className="ui fluid image"
+        >
+          <img
+            src={`/${this.props.gif.location}`}
+            alt={this.props.gif.title}
+            className="ui fluid image"
+          />
+          <track kind="captions" src={this.props.gif.description} />
+        </video> */
+}

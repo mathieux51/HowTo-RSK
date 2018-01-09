@@ -13,7 +13,7 @@ Coming soon a new feature that allows users to upload videos via their phone's c
 
 
 
-# Dossier de synthèse de pratique professionnelle (DSPP)
+# Dossier de projet
 
 Lien vers le gitbook : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
 
@@ -69,3 +69,4 @@ Suite aux directives données dans le [Répertoire National des Certifications P
 
 ### [IV. Notice d'utilisation](IV.notice-dutilisation/readme.md)
 
+### [V. Conclusion](V.conclusion/readme.md)
