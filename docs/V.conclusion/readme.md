@@ -4,7 +4,7 @@ Ce projet s'est déroulé pendant 2 mois au sein de Aries à Toulouse. Nous avon
 
 ## Conclusion personnelle
 
-Durant ce projet, j'ai pu m'immerger dans le développement d'une application web et d'un serveur. J'ai choisi des technologies qui m'ont permis d'énormément évoluer dans le développement web. Ce projet m'a permis de prendre confiance en mes compétences de développeur fullstack javascript. J'ai fait et appris de mes erreurs. Je suis confiant sur le fait qu'elles me permettront de mieux anticiper les prochaines. 
+Durant ce projet, j'ai pu m'immerger dans le développement d'une application web et d'un serveur. J'ai choisi des technologies qui m'ont permises d'énormément évoluer dans le développement web. Ce projet m'a permis de prendre confiance en mes compétences de développeur fullstack javascript. J'ai fait et appris de mes erreurs. Je suis confiant sur le fait qu'elles me permettront de mieux anticiper les prochaines. 
 
 ## Remerciements 
 
