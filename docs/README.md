@@ -21,6 +21,10 @@ Lien vers docs.google : [https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_
 
 **📖 Lien vers la documentation** : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
 
+## Présentation oral
+
+ Lien vers la présentation : [https://mathieux51.github.io/how-to-slides](https://mathieux51.github.io/how-to-slides/)
+
 ## Table des matières 
 
 Suite aux directives données dans le [Répertoire National des Certifications Professionnelles](http://www.rncp.cncp.gouv.fr/grand-public/visualisationFiche?format=fr&fiche=5927), j'ai  décidé d'utiliser le plan suivant :
