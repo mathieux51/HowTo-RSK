@@ -19,7 +19,7 @@ Lien vers docs.google : [https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_
 
 ## Dossier de projet
 
-**📖 Lien vers le gitbook** : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
+**📖 Lien vers la documentation** : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
 
 ## Table des matières 
 
