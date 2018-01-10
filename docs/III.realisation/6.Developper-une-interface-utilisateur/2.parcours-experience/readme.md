@@ -24,5 +24,5 @@ Le parcours d'expérience va nous permettre de simuler l'utilisation de l'applic
 
 #### Analyse des observations
 
-L'objectif principal est de satisfaire le persona primaire. Cet objectif est atteint. Néanmoins l'UX Map de Mr. Marklovitz nous montre qu'un travail de modification doit être fait sur le frontend de l'application. En effet ce dernier n'a pas envi de se retrouver dans la situation où il doit expliquer le fonctionnement de la plateforme. De plus cette dernière est entièrement en anglais, il faudra prévoir une version française.  
+L'objectif principal est de satisfaire le persona primaire. Cet objectif est atteint. Néanmoins l'UX Map de Mr. Marklovitz nous montre qu'un travail de modification doit être fait sur le frontend de l'application. En effet ce dernier n'a pas envie de se retrouver dans la situation où il doit expliquer le fonctionnement de la plateforme. De plus cette dernière est entièrement en anglais, il faudra prévoir une version française.  
 
