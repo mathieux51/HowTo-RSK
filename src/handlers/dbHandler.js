@@ -1,6 +1,13 @@
 import { Gif } from 'data/models';
 
 export default async function dbHandler(req, res, next) {
+  console.warn(
+    'fileHandler',
+    'res.locals.fileId',
+    res.locals.fileId,
+    'res.locals.fileName',
+    res.locals.fileName,
+  );
   if (req.file.size) {
     const id = res.locals.fileId;
     Gif.create({
