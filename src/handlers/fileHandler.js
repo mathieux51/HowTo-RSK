@@ -9,15 +9,12 @@ export default function fileHandler(req, res, next) {
     res.locals.fileName = res.locals.fileId + req.file.detectedFileExtension;
     const finalPath = path.join(destination, res.locals.fileName);
     const outStream = fs.createWriteStream(finalPath);
-    console.warn(
-      'fileHandler',
-      'res.locals.fileId',
-      res.locals.fileId,
-      'res.locals.fileName',
-      res.locals.fileName,
-    );
+
     req.file.stream.pipe(outStream);
     outStream.on('error', next);
-    outStream.on('finish', next);
+    outStream.on('finish', () => {
+      console.info('File', res.locals.fileName, 'is saved');
+      next();
+    });
   }
 }
