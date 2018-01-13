@@ -12,4 +12,4 @@ Beaucoup de personnes m'ont aidé tout au long de ce projet. Ils ont su m'apport
 
 # 👋
 
-Aries (Carole, Byron et Florence), Pascal, Sonia, Serge, Jérémy, Patrick, Coovia (Pol, Murielle et Laurenne) et Ex-Coovia (Alice, Manu, Damien, David, Sébastien, Philipe), Team Reactorz (Elo, Nico, Florent, Mehdi, Romain, Raphaël, Jordan, Loïc), Lolo, Paul, Alice, Antoine, Blandine, Françoise, Ulysse, Jérôme et bien sûr Juliane.
+Aries (Carole, Byron et Florence), Pascal, Sonia, Serge, Jérémy, Patrick, Coovia (Pol, Murielle et Laurenne) et Ex-Coovia (Alice, Manu, Damien, David, Sébastien, Philipe), Team Reactorz (Elo, Nico, Florent, Mehdi, Romain, Raphaël, Jordan, Loïc), Lolo, Paul, Alice, Antoine, Blandine, Françoise, Ulysse, Jérôme, Brian et bien sûr Juliane.
