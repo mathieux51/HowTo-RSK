@@ -13,9 +13,9 @@ This is easily done via a chrome plugin that captures the user’s screen
 
 Coming soon a new feature that allows users to upload videos via their phone's camera for an optimised gif.
 
-## Dossier professionnel
+## HowTo
 
-Lien vers docs.google : [https://goo.gl/kNbJgD](https://goo.gl/kNbJgD)
+[apphowto.herokuapp.com/](https://apphowto.herokuapp.com/)
 
 ## Dossier de projet
 
@@ -24,6 +24,10 @@ Lien vers docs.google : [https://goo.gl/kNbJgD](https://goo.gl/kNbJgD)
 ## Présentation orale
 
  Lien vers la présentation : [https://mathieux51.github.io/how-to-slides](https://mathieux51.github.io/how-to-slides/)
+
+## Dossier professionnel
+
+Lien vers docs.google : [https://goo.gl/kNbJgD](https://goo.gl/kNbJgD)
 
 ## Table des matières 
 
