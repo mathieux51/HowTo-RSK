@@ -21,7 +21,7 @@ Lien vers docs.google : [https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_
 
 **📖 Lien vers la documentation** : [https://mathieux51.gitbooks.io/HowTo](https://mathieux51.gitbooks.io/HowTo)
 
-## Présentation oral
+## Présentation orale
 
  Lien vers la présentation : [https://mathieux51.github.io/how-to-slides](https://mathieux51.github.io/how-to-slides/)
 
