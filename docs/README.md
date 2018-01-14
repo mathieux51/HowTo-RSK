@@ -15,7 +15,7 @@ Coming soon a new feature that allows users to upload videos via their phone's c
 
 ## Dossier professionnel
 
-Lien vers docs.google : [https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_0cGcsX_H9I_dvxPGqntWKL6s](https://docs.google.com/document/d/1sBkq8xHxXcPKydN2ef_0cGcsX_H9I_dvxPGqntWKL6s)
+Lien vers docs.google : [https://goo.gl/kNbJgD](https://goo.gl/kNbJgD)
 
 ## Dossier de projet
 
